@@ -8,3 +8,5 @@ export const event = {
 export const symbol = {
     Scope: Symbol('Scope')
 };
+export const ADDON_ID = 'storybook/react-live-edit';
+export const PANEL_ID = `${ADDON_ID}/panel`;
