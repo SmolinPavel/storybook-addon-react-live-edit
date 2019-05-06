@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import CodeMirror from 'codemirror';
-import { baseFonts } from '@storybook/components/dist/theme';
 import { event } from '../../constants';
 import CodeMirrorStyle, * as themes from './styles';
 
@@ -21,8 +20,7 @@ type LiveEditorState = {
     theme: ?string
 };
 
-export default
-class LiveEditor extends React.Component<LiveEditorProps, LiveEditorState> {
+export default class LiveEditor extends React.Component<LiveEditorProps, LiveEditorState> {
     state = {
         code: null,
         theme: this.props.theme
@@ -94,7 +92,7 @@ class LiveEditor extends React.Component<LiveEditorProps, LiveEditorState> {
         this.codeMirrorRef = el;
     }
 
-    render(): ?React.Element<'div'> {
+    render(): any {
         if (!this.props.active) {
             return null;
         }
@@ -103,7 +101,6 @@ class LiveEditor extends React.Component<LiveEditorProps, LiveEditorState> {
             return (
                 <div
                     style={{
-                        ...baseFonts,
                         width: '100%',
                         textAlign: 'center',
                         padding: '20px',
@@ -118,16 +115,18 @@ class LiveEditor extends React.Component<LiveEditorProps, LiveEditorState> {
 
         const themeVarName = themeNameToVarName(this.state.theme);
         return (
-            <div style={{ width: '100%', display: 'flex', flex: '1 1', minHeight: '100%' }}>
-                {themeVarName in themes && (<style dangerouslySetInnerHTML={{ __html: themes[themeVarName] }} />) }
+            <div key={themeVarName} style={{ width: '100%', display: 'flex', flex: '1 1', minHeight: '100%' }}>
+                {themeVarName in themes && <style dangerouslySetInnerHTML={{ __html: themes[themeVarName] }} />}
                 <style dangerouslySetInnerHTML={{ __html: CodeMirrorStyle }} />
                 <style
-                    dangerouslySetInnerHTML={{ __html: `
+                    dangerouslySetInnerHTML={{
+                        __html: `
                         div.CodeMirror {
                             width: 100%;
                             height: initial;
                         }
-                    ` }}
+                    `
+                    }}
                 />
                 <div style={{ minWidth: '100%', minHeight: '100%', display: 'flex', flex: '1 1' }} ref={this.setCodeMirrorRef} />
             </div>

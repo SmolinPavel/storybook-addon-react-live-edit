@@ -16,8 +16,7 @@ type LivePreviewState = {
     code: string
 };
 
-export default
-class LivePreview extends React.Component<LivePreviewProps, LivePreviewState> {
+export default class LivePreview extends React.Component<LivePreviewProps, LivePreviewState> {
     state = {
         code: this.props.code
     };
@@ -43,11 +42,11 @@ class LivePreview extends React.Component<LivePreviewProps, LivePreviewState> {
         this.props.channel.removeListener(event.UpdateSource, this.setSource);
     }
 
-    render(): ?React.Element<*> {
+    render(): any {
         try {
-            return transform(this.state.code, this.props.scope || {})();
+            return transform(`return ${this.state.code}`, this.props.scope || {})();
         } catch (e) {
-            return <ErrorDisplay error={e}/>;
+            return <ErrorDisplay error={e} />;
         }
     }
 }
