@@ -14,3 +14,17 @@ export const withLiveEditScope: (scope: any) => any;
 export interface Story {
     addLiveSource: (name: string, source: string, scope?: any) => this;
 }
+
+export interface LivePreviewProps {
+    scope?: {
+        [string]: any;
+    };
+    channel: any;
+    code: string;
+}
+
+export interface LivePreviewState {
+    code: string;
+}
+
+export const LivePreview: React.ComponentType<LivePreviewProps>;
