@@ -14,7 +14,7 @@
   "author": "Adam Makświej <adam.makswiej@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vertexbz/storybook-addon-react-live-edit.git"
+    "url": "https://github.com/SmolinPavel/storybook-addon-react-live-edit.git"
   },
   "license": "MIT",
   "dependencies": {
