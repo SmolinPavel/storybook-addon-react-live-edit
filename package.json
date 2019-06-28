@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && babel src --ignore src/__tests__,src/__mocks__ --out-dir dist -s && cp src/index.d.ts dist/",
+    "build": "npm run clean && babel src --ignore src/__tests__,src/__mocks__ --out-dir dist -s && copyfiles src/index.d.ts dist/",
     "lint": "eslint src --ext .js --cache",
     "test": "jest",
     "prepare": "npm run build",
@@ -19,7 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "@babel/standalone": "^7.0.0",
-    "codemirror": "^5.46.0"
+    "codemirror": "^5.46.0",
+    "copyfiles": "^2.1.0"
   },
   "devDependencies": {
     "@storybook/addons": "^5.0.11",
